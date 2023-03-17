@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro (SaveFlowers)</title>
+</head>
+<style>
+    
+.calculadora {
+    width: fit-content;
+    height: fit-content;
+    background-color: #bfbff3;
+    border-radius: 20px;
+    border: solid 3px;
+    justify-content: center;
+    align-items: center;
+}
+
+.simulacao {
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    padding: 50px;
+}
+
+input {
+    width: 100%;
+    height: 25px;
+    border: solid 1px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+button {
+    width: 614px;
+    height: 40px;
+    background-color: #1F203B;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ffffff;
+    padding: auto;
+}
+
+button:hover {
+    height: 32px;
+    background-color: #bfbff3;
+}
+
+.resultado {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+</style>
+<body>
+    <div class="calculadora">
+        <h1 style="margin: 10px;">Simulador Financeiro</h1>
+        <div class="simulacao">
+            <span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Informe a quantidade de Rosas transportadas por quilo </span><br><br>
+            <input id="input_rosas"> <br><br>   
+            <span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Informe o valor ganho por quantidade de Rosas transportadas</span><br><br>
+            <input id="input_ganho">
+
+            <button onclick="calcularSimulacao()">Calcular</button><br><br>
+            <div id="div_resultado" class="resultado"></div>
+            </div>
+        </div>
+</body>
+</html>
+<script>
+    function calcularSimulacao() {
+        var rosas = Number(input_rosas.value);
+        var ganho = Number(input_ganho.value);
+        var lucro = rosas * ganho;
+        var perda = lucro * 0.4;
+        var semSistema = lucro - perda;
+        var economia = perda * 0.5;
+        var comSistema =  semSistema + economia;
+
+        div_resultado.innerHTML = `<br><br>Ao fazer o transporte das Rosas sem o monitoramento ideal do controle de temperatura e umidade, você lucra <b><i>R$${lucro}</i></b>, perdendo <i>40%</i> da sua carga e lucro, podendo se tornar <b><i>R$${semSistema}</i></b>, como novo lucro final. <br>Devido a esse mal monitoramento, há uma perda muito grande no lucro e no conteúdo sendo transportado, por isso, no transporte das Rosas com o uso do nosso sistema de monitoramento de controle e umidade, você pode reduzir em <i>50%</i> sua perda, gerando <b><i>R$${economia}</i></b> a mais de lucro, obtendo <b><i>R$${comSistema}</i></b>, valor significativamente alto comparado ao lucro sem sistema.`;       
+    }
+</script>
